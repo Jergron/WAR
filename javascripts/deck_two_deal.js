@@ -5,19 +5,22 @@ define(function(require) {
   var getTemplates = require("get-templates");
 
   return {
-    drawACard: function(deckId) {
-    console.log("deckId1", deckId);
+    dealACard2: function(deckId) {
+    console.log("deckId2", deckId);
       $.ajax({
         url: "http://deckofcardsapi.com/api/deck/"+ deckId +"/draw/?count=1"  
       }).done(function(data){
         console.log("data", data);
         for (var i = 0; i < data.cards.length; i++) {
-          value = data.cards[i].value;
-          console.log("VALUE", value);
+          value2 = data.cards[i].value;
+          codeTwo = data.cards[i].code;
+          console.log("VALUE2", value2);
+          console.log("codeTwo", codeTwo);
         }
-        var populatedTemplate = getTemplates.cardTpl(data);
+        var populatedTemplate = getTemplates.card2Tpl(data);
 
-        $("#main").html(populatedTemplate);
+        $("#main2").html(populatedTemplate);
+
       });
     }
   };

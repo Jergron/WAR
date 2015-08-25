@@ -16,8 +16,8 @@ requirejs.config({
   }
 });
 
-requirejs(["jquery", "lodash", "hbs", "bootstrap", "firebase", "q", "authentication", "core_logic","shuffle_deck", "deck_one_draw"], 
-  function($, _, Handlebars, bootstrap, _firebase, q, auth, core, shuffle, deckOneDraw) {
+requirejs(["jquery", "lodash", "hbs", "bootstrap", "firebase", "q", "authentication", "core_logic","shuffle_deck", "deck_one_deal"], 
+  function($, _, Handlebars, bootstrap, _firebase, q, auth, core, shuffle, deckOneDeal) {
 
   var ref = new Firebase("https://blazing-heat-6599.firebaseio.com");
   var authData = ref.getAuth();

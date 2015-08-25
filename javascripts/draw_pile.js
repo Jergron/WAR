@@ -3,16 +3,14 @@ define(function(require) {
   var _ = require("lodash");
   var Q = require("q");
 
-
     return {
-      shuffleDeck: function() {
+      drawPile: function(id, code) {
         var deferred = Q.defer();
 
         $.ajax({
-          url: "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-          deck_count:"GET"    
+          url: "http://deckofcardsapi.com/api/deck/" + id + "/pile/player1/draw/?cards=" + code
         }).done(function(data){
-          console.log("data", data);
+          console.log("drawPile", data);
           deferred.resolve(data);
         });
 
