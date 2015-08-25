@@ -23,9 +23,11 @@ define(function(require) {
  $(document).on("click", "#shuffle", function() {
   shuffle.shuffleDeck().then(function(deck) {
     $(document).on("click", "#deal", function() {
+
       deckOne = deck.deck_id;
-      console.log("deckOne", deckOne);
+
       deal.dealACard(deckOne);
+
     });
 
     })
@@ -35,9 +37,9 @@ define(function(require) {
   
   shuffle.shuffleDeck().then(function(deck) {
    $(document).on("click", "#deal", function() {
+
       deckTwo = deck.deck_id;
-      console.log("deckTwo", deckTwo);
-      console.log("deck", deck);
+
       deal2.dealACard2(deckTwo);
     
     });
@@ -52,10 +54,12 @@ define(function(require) {
       // console.log("codeTwo", codeTwo);
 
       if (value > value2) {
+
         playerOne.push(2);
         console.log("Player One", playerOne);
         
        } else if (value2 > value) {
+        
        playerTwo.push(2);
        console.log("Player Two", playerTwo);
         
