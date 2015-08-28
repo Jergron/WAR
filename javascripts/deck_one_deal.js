@@ -4,36 +4,39 @@ define(function(require) {
   var shuffle = require("shuffle_deck");
   var getTemplates = require("get-templates");
 
+// Decreases card deck count by 1 using the unique ID from the API
   return {
     dealACard: function(deckId) {
-    console.log("deckId1", deckId);
+    
       $.ajax({
         url: "http://deckofcardsapi.com/api/deck/"+ deckId +"/draw/?count=1"  
       }).done(function(data){
-        console.log("data", data);
+
         for (var i = 0; i < data.cards.length; i++) {
-          value2 = data.cards[i].value;
-          if (value2 === "QUEEN" || value2 === "KING" || value2 === "ACE" || value2 === "JACK") {
-            switch(value2){
-              case "ACE": parseInt("14");
+          value = data.cards[i].value;
+
+          //Swtiches string values to numbers
+          if (value === "QUEEN" || value === "KING" || value === "ACE" || value === "JACK") {
+            switch(value){
+              case "ACE": value = parseInt("14");
               break;
-              case "KING": parseInt("13");
+              case "KING": value = parseInt("13");
               break;
-              case "QUEEN": parseInt("12");
+              case "QUEEN": value = parseInt("12");
               break;
-              case "JACK": parseInt("11");
+              case "JACK": value = parseInt("11");
               break;
             }
           } else { 
-              parseInt(value2);
+              parseInt(value);
           }
           codeOne = data.cards[i].code;
-          console.log("VALUE", value2);
-          console.log("codeOne", codeOne);
+          console.log("VALUE", value);
         }
         var populatedTemplate = getTemplates.cardTpl(data);
 
         $("#main").html(populatedTemplate);
+        
       });
     }
   };
